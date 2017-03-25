@@ -1,0 +1,5 @@
+shp <- readOGR(dsn = ".", layer = "Tanzania_soil")
+# shp <- spTransform(shp, CRS("+proj=longlat +elips=WGS84"))
+rast <- raster(1000, 1000)
+extent(rast) <- extent(shp)
+map <- rasterize(shp, rast, field = "MAIN_TYPE")
